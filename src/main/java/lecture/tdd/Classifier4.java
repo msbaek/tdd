@@ -32,8 +32,11 @@ public class Classifier4 {
 		return number % factor == 0;
 	}
 
-	public void addFactor(int factor) {
-		factors.add(factor);
+	private void addFactor(int i) {
+		if (isFactor(i)) {
+			factors.add(i);
+			factors.add(number / i);
+		}
 	}
 
 	public Set<Integer> getFactors() {
@@ -41,8 +44,7 @@ public class Classifier4 {
 	}
 
 	public void calculateFactors() {
-		for (int i = 2; i < number; i++)
-			if (isFactor(i))
-				addFactor(i);
-	}
+        for (int i = 2; i < Math.sqrt(number) + 1; i++)
+            addFactor(i);
+    }
 }

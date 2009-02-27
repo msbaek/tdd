@@ -43,7 +43,7 @@ public class Classifier4Test {
 		new Classifier4(-20);
 	}
 
-	@Test(timeout = 1)
+	@Test(timeout = 1 * 1000)
 	public void factors_for_max_int() {
 		Classifier4 c = new Classifier4(Integer.MAX_VALUE);
 		c.calculateFactors();
