@@ -11,6 +11,18 @@ import static org.hamcrest.core.Is.*;
 
 public class Classifier4Test {
 	@Test
+	public void perfection() {
+		int[] perfectNumbers = new int[] { 6, 28, 496, 8128, 33550336 };
+
+		for (int number : perfectNumbers)
+			assertTrue(classifierFor(number).isPerfect());
+	}
+
+	private Classifier4 classifierFor(int number) {
+		return new Classifier4(number);
+	}
+
+	@Test
 	public void sum() {
 		Classifier4 c = new Classifier4(20);
 		c.calculateFactors();

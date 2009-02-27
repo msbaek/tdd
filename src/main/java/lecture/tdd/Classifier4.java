@@ -16,13 +16,18 @@ public class Classifier4 {
 		factors.add(number);
 	}
 
-	public int sumOfFactors() {
-	    int sum = 0;
-	    for(int i : factors)
-	        sum += i;
-	    return sum;
+	public boolean isPerfect() {
+		calculateFactors();
+		return sumOfFactors() - number == number;
 	}
-	
+
+	public int sumOfFactors() {
+		int sum = 0;
+		for (int i : factors)
+			sum += i;
+		return sum;
+	}
+
 	public boolean isFactor(int factor) {
 		return number % factor == 0;
 	}
