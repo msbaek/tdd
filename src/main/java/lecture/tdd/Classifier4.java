@@ -44,7 +44,7 @@ public class Classifier4 {
 	}
 
 	public void calculateFactors() {
-        for (int i = 2; i < Math.sqrt(number) + 1; i++)
-            addFactor(i);
-    }
+		for (int i = 2; i < Math.sqrt(number) + 1; i++)
+			addFactor(i);
+	}
 }

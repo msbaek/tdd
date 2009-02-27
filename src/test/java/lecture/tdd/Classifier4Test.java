@@ -1,5 +1,6 @@
 package lecture.tdd;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,15 +12,28 @@ import static org.hamcrest.core.Is.*;
 
 public class Classifier4Test {
 	@Test
+	public void is_1_a_factor_of_10() {
+		Classifier4 c = new Classifier4(10);
+		assertTrue(isFactor(c, 1));
+	}
+
+	private boolean isFactor(Classifier4 c, int factor) {
+		try {
+			Method m = Classifier4.class.getDeclaredMethod("isFactor", int.class);
+			m.setAccessible(true);
+			return (Boolean) m.invoke(c, factor);
+		} catch (Throwable t) {
+			fail();
+		}
+		return false;
+	}
+
+	@Test
 	public void perfection() {
 		int[] perfectNumbers = new int[] { 6, 28, 496, 8128, 33550336 };
 
 		for (int number : perfectNumbers)
 			assertTrue(classifierFor(number).isPerfect());
-	}
-
-	private Classifier4 classifierFor(int number) {
-		return new Classifier4(number);
 	}
 
 	@Test
@@ -76,5 +90,9 @@ public class Classifier4Test {
 
 	private Set<Integer> expectationSetWith(Integer... numbers) {
 		return new HashSet<Integer>(Arrays.asList(numbers));
+	}
+
+	private Classifier4 classifierFor(int number) {
+		return new Classifier4(number);
 	}
 }
