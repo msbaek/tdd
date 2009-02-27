@@ -10,6 +10,28 @@ import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
 
 public class Classifier4Test {
+	// start of boundary condition
+	@Test
+	public void factors_for_1() {
+		Classifier4 c = new Classifier4(1);
+		c.calculateFactors();
+		assertThat(c.getFactors(), is(expectationSetWith(1)));
+	}
+
+	@Test(expected = InvalidNumberException.class)
+	public void cannot_classify_negative_numbers() {
+		new Classifier4(-20);
+	}
+
+	@Test
+	public void factors_for_max_int() {
+		Classifier4 c = new Classifier4(Integer.MAX_VALUE);
+		c.calculateFactors();
+		assertThat(c.getFactors(), is(expectationSetWith(1, 2147483647)));
+	}
+	// consumption awareness encourages exploration of boundary conditions
+	// end of boundary conditions
+
 	@Test
 	public void factors_for_100() {
 		Classifier4 c = new Classifier4(100);

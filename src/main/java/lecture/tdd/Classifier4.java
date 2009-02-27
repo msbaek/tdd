@@ -8,6 +8,8 @@ public class Classifier4 {
 	private Set<Integer> factors;
 
 	public Classifier4(int number) {
+		if (number < 0)
+			throw new InvalidNumberException();
 		this.number = number;
 		factors = new HashSet<Integer>();
 		factors.add(1);
