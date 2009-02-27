@@ -10,6 +10,14 @@ import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
 
 public class Classifier4Test {
+	@Test
+	public void sum() {
+		Classifier4 c = new Classifier4(20);
+		c.calculateFactors();
+		int expected = 1 + 2 + 4 + 5 + 10 + 20;
+		assertThat(c.sumOfFactors(), is(expected));
+	}
+
 	// start of boundary condition
 	@Test
 	public void factors_for_1() {
@@ -23,12 +31,13 @@ public class Classifier4Test {
 		new Classifier4(-20);
 	}
 
-	@Test
+	@Test(timeout = 1)
 	public void factors_for_max_int() {
 		Classifier4 c = new Classifier4(Integer.MAX_VALUE);
 		c.calculateFactors();
 		assertThat(c.getFactors(), is(expectationSetWith(1, 2147483647)));
 	}
+
 	// consumption awareness encourages exploration of boundary conditions
 	// end of boundary conditions
 
