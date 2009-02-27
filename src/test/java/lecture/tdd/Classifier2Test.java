@@ -1,6 +1,7 @@
 package lecture.tdd;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.*;
 
 import org.junit.Test;
 
@@ -21,5 +22,12 @@ public class Classifier2Test {
 	public void is_3_a_factor_of_7() {
 	    Classifier2 c = new Classifier2(7);
 	    assertFalse(c.isFactor(3));
+	}
+	
+	@Test
+	public void factors_for_6() {
+		int [] expected = new int [] {1,6,2,3};
+		Classifier2 c = new Classifier2(6);
+		assertThat(c.getFactors(), is(expected));
 	}
 }
