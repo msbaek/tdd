@@ -26,7 +26,7 @@ public class Classifier2Test {
 	
 	@Test
 	public void factors_for_6() {
-		int [] expected = new int [] {1,6,2,3};
+		Integer [] expected = new Integer [] {1,2,3,6};
 		Classifier2 c = new Classifier2(6);
 		assertThat(c.getFactors(), is(expected));
 	}
