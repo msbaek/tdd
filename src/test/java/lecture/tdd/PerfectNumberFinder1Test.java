@@ -17,7 +17,7 @@ public class PerfectNumberFinder1Test {
 	        assertTrue(PerfectNumberFinder1.isPerfect(i));
 	}
 
-	@Test public void test_non_perfection() {
+	public void test_non_perfection() {
 	    List<Integer> expected = new ArrayList<Integer>(Arrays.asList(PERFECT_NUMS));
 	    for(int i = 2; i < 100000; i++) {
 	        if(expected.contains(i))
